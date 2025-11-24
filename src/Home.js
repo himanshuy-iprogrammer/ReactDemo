@@ -53,10 +53,11 @@ function Home() {
                             }}
                             onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
                             onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
-                            aria-label="Get started with the app"
                         >
                             Get Started
                         </button>
+
+
                     </div>
                 </section>
 

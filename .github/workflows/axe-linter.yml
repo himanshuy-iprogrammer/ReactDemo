@@ -1,7 +1,7 @@
 name: Axe DevTools Linter
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -17,20 +17,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+      # 3️⃣ Cache node_modules to speed up workflow
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4️⃣ Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # 5️⃣ Run Axe DevTools Linter
       - name: Run Axe DevTools Linter
         uses: dequelabs/axe-linter-action@v1
         with:
           api_key: ${{ secrets.DEQUE_REACT_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           config-path: ./axe-linter-config.json
+        continue-on-error: false  # fail workflow if errors occur

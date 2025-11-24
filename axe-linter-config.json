@@ -4,14 +4,20 @@
     ],
     "include": [
         "src/**/*.js",
-        "src/**/*.jsx"
+        "src/**/*.jsx",
+        "src/**/*.ts",
+        "src/**/*.tsx"
     ],
     "rules": {
+        "button-has-name": "error",
         "image-has-accessibility-label": "error",
+        "link-has-name": "error",
+        "form-field-has-label": "error",
         "has-accessibility-role": "error",
         "has-valid-accessibility-actions": "error",
         "has-valid-accessibility-state": "error",
         "has-valid-accessibility-value": "error",
-        "has-valid-accessibility-role": "error"
+        "aria-allowed-attr": "error",
+        "color-contrast": "warn"
     }
 }
