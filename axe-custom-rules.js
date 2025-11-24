@@ -1,16 +1,31 @@
 // axe-custom-rules.js
-export const rules = [
-    {
-        id: 'min-font-size',
-        selector: '*',
-        enabled: true,
-        evaluate: (node) => {
-            const style = window.getComputedStyle(node);
-            if (!style.fontSize) return true; // ignore if no font size
-            const fontSize = parseFloat(style.fontSize);
-            return fontSize >= 14; // Minimum 14px
+module.exports = {
+    'min-font-size': {
+        meta: {
+            type: 'accessibility',
+            docs: {
+                description: 'Ensure text has a minimum font size of 14px',
+            },
+            messages: {
+                fail: 'Font size too small (<14px)',
+            },
         },
-        tags: ['custom', 'wcag2aa', 'text'],
-        description: 'Ensure text has a minimum font size of 14px',
-    }
-];
+        create: (context) => ({
+            JSXOpeningElement(node) {
+                const styleAttr = node.attributes.find(attr => attr.name && attr.name.name === 'style');
+                if (styleAttr && styleAttr.value && styleAttr.value.expression && styleAttr.value.expression.properties) {
+                    const fontProp = styleAttr.value.expression.properties.find(p => p.key.name === 'fontSize');
+                    if (fontProp) {
+                        const fontValue = parseFloat(fontProp.value.value);
+                        if (fontValue < 14) {
+                            context.report({
+                                node,
+                                messageId: 'fail',
+                            });
+                        }
+                    }
+                }
+            },
+        }),
+    },
+};
