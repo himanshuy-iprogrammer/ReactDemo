@@ -1,0 +1,36 @@
+name: Axe DevTools Linter
+
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+      - main
+      - development
+  pull_request:
+    branches:
+      - main
+      - release/*
+      - development
+
+jobs:
+  axe-linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Axe DevTools Linter
+        uses: dequelabs/axe-linter-action@v1
+        with:
+          api_key: ${{ secrets.DEQUE_REACT_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          config-path: ./axe-linter-config.json

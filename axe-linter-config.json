@@ -1,0 +1,17 @@
+{
+    "global-libraries": [
+        "react"
+    ],
+    "include": [
+        "src/**/*.js",
+        "src/**/*.jsx"
+    ],
+    "rules": {
+        "image-has-accessibility-label": "error",
+        "has-accessibility-role": "error",
+        "has-valid-accessibility-actions": "error",
+        "has-valid-accessibility-state": "error",
+        "has-valid-accessibility-value": "error",
+        "has-valid-accessibility-role": "error"
+    }
+}
