@@ -9,6 +9,7 @@
         "src/**/*.tsx"
     ],
     "rules": {
+        "min-font-size": "error",
         "button-has-name": "error",
         "link-has-name": "error",
         "interactive-supports-focus": "error",
