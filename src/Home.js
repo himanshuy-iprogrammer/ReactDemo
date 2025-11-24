@@ -54,8 +54,9 @@ function Home() {
                             onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
                             onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
                         >
-                            Get Started
+                            {/* intentionally empty */}
                         </button>
+
 
 
                     </div>
