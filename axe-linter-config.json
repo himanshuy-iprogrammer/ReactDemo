@@ -30,7 +30,7 @@
         "landmark-unique": "warn",
         "heading-order": "error",
         "document-title": "warn",
-        "color-contrast": "warn",
+        "color-contrast": "error",
         "focus-trap": "warn",
         "scrollable-region-focusable": "warn",
         "duplicate-id": "error",

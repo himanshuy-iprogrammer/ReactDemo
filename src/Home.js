@@ -5,8 +5,8 @@ function Home() {
         <div>
             <header style={{
                 backgroundColor: '#333',
-                color: 'white',
                 padding: '10px 20px',
+                color: '#555',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center'
@@ -28,7 +28,7 @@ function Home() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'white',
+                    color: '#ccc',
                     fontFamily: 'Arial, sans-serif',
                     textAlign: 'center'
                 }}>
@@ -47,7 +47,7 @@ function Home() {
                                 border: 'none',
                                 borderRadius: '25px',
                                 cursor: 'pointer',
-                                color: 'white',
+                                color: '#eee',
                                 boxShadow: '0 4px 8px rgba(0,0,0,0.3)',
                                 transition: 'transform 0.2s'
                             }}
