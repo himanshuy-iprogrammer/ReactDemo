@@ -12,9 +12,15 @@ module.exports = {
         },
         create: (context) => ({
             JSXOpeningElement(node) {
-                const styleAttr = node.attributes.find(attr => attr.name && attr.name.name === 'style');
-                if (styleAttr && styleAttr.value && styleAttr.value.expression && styleAttr.value.expression.properties) {
-                    const fontProp = styleAttr.value.expression.properties.find(p => p.key.name === 'fontSize');
+                // Check if style attribute exists
+                const styleAttr = node.attributes.find(
+                    attr => attr.name && attr.name.name === 'style'
+                );
+
+                if (styleAttr && styleAttr.value && styleAttr.value.expression?.properties) {
+                    const fontProp = styleAttr.value.expression.properties.find(
+                        p => p.key.name === 'fontSize'
+                    );
                     if (fontProp) {
                         const fontValue = parseFloat(fontProp.value.value);
                         if (fontValue < 14) {
