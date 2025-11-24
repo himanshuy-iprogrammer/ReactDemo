@@ -37,5 +37,6 @@
         "duplicate-id": "error",
         "html-has-lang": "error",
         "label-content": "error"
-    }
+    },
+    "custom-rules": "./axe-custom-rules.js"
 }
